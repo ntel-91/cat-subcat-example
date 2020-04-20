@@ -1,6 +1,12 @@
 <h2>Categories</h2>
 
-
-<% @categories.each do |category| %>
-    <%= category.name %>
-<% end %>
+<ul>
+    <% @categories.each do |category| %>  
+        <li><%= category.name %></li>
+        <ul>
+            <% category.sub_categories.each do |subcat| %>
+                <li><%= subcat.name %> </li>
+            <% end %>
+        </ul>
+    <% end %>
+</ul>

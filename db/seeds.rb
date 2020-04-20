@@ -10,6 +10,41 @@ ProductCategory.destroy_all
 Product.destroy_all
 Category.destroy_all
 
-CATEGORIES = Faker::Base.fetch_all('commerce.department').map do |name|
+NUM_SUBCATEGORIES = 3
+PRODUCT_COUNT = 100
+MAX_CATEGORIES = 3
+
+categories = Faker::Base.fetch_all('commerce.department').map do |name|
     Category.find_or_create_by!(name: name)
+end
+
+categories.each do |category|
+    parent = Category.find(category.id)
+    NUM_SUBCATEGORIES.times do
+        Category.create(name: "#{category.name} - #{Faker::Commerce.material}", parent_id: category.id)
+    end
+end
+
+SUBCATEGORIES = Category.all.where.not(parent_id: nil)
+
+PRODUCT_COUNT.times do
+
+    name = ''
+
+    loop do
+        name = Faker::Commerce.product_name
+        break unless Product.exists?(name: name)
+    end
+
+    product = Product.new(
+        name: name,
+        price: Faker::Commerce.price
+    )
+
+    num_sub_categories = 1 + rand(MAX_CATEGORIES)
+    product.categories = SUBCATEGORIES.sample(num_sub_categories)
+
+    product.save
+
+
 end
