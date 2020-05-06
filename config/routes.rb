@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   
-  root to: 'auth#login'
+  root to: 'auth#index'
   post '/login', to: "auth#login", as: :login
   # resources :products
   resources :categories do
