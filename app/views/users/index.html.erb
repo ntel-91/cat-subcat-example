@@ -1,0 +1,15 @@
+<h2> Create New Account </h2>
+
+<%= form_with url: user_path, method: "POST" do |user| %>
+    <%= user.label :q, "Name" %>
+    <%= user.text_field :name %>
+    <br>
+    <%= user.label :q, "Username" %>
+    <%= user.text_field :username %>
+    <br>
+    <%= user.label :q, "Password" %>
+    <%= user.password_field :password %>
+    <br>
+    <%= user.submit "Create Account" %>
+    
+<% end %>
