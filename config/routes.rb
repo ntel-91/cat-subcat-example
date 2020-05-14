@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   
-  root to: 'sessions#new'
-  post '/login', to: "sessions#create", as: :login
+  # auth
+  get '/login', to: 'sessions#new'
+  post '/login', to: "sessions#create"
+  post '/logout', to: "sessions#destroy", as: :logout
   
   # users
   resources :users, only: [:new, :create]

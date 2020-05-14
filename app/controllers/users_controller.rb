@@ -10,7 +10,6 @@ class UsersController < ApplicationController
             username: params[:username],
             password: params[:password]
         )
-
         user.save
 
         redirect_to categories_path

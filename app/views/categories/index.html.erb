@@ -1,4 +1,10 @@
-<h2>Categories</h2>
+<h2>Categories</h2> 
+
+<%= form_with url: logout_path, method: "POST" do |f| %>
+    <%= f.submit "logout" %>
+<% end %>
+
+
 
 <ul>
     <% @categories.each do |category| %>  

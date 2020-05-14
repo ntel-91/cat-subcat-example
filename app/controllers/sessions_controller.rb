@@ -11,4 +11,9 @@ class SessionsController < ApplicationController
             redirect_to categories_path
         end
     end
+
+    def destroy
+        session.delete :username
+        redirect_to login_path
+    end
 end
