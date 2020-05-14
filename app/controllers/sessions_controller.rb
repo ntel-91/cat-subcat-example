@@ -1,12 +1,13 @@
-class AuthController < ApplicationController
+class SessionsController < ApplicationController
 
-    def index
+    def new
     end
-
-    def login
+    
+    def create
         user = User.find_by(username: params[:username])
         
         if user && user.authenticate(params[:password])
+            session[:username] = params[:username]
             redirect_to categories_path
         end
     end

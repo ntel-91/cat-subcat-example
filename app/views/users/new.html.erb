@@ -1,6 +1,6 @@
 <h2> Create New Account </h2>
 
-<%= form_with url: user_path, method: "POST" do |user| %>
+<%= form_with url: users_path, method: "POST" do |user| %>
     <%= user.label :q, "Name" %>
     <%= user.text_field :name %>
     <br>

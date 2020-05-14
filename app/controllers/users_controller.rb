@@ -1,9 +1,10 @@
 class UsersController < ApplicationController
-    def index
+
+    def new
+        
     end
 
     def create
-        
         user = User.new(
             name: params[:name],
             username: params[:username],

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   
-  root to: 'auth#index'
-  post '/login', to: "auth#login", as: :login
+  root to: 'sessions#new'
+  post '/login', to: "sessions#create", as: :login
   
   # users
-  get '/user', to: "users#index"
-  post '/user', to: "users#create"
+  resources :users, only: [:new, :create]
+  
 
   # resources :products
   resources :categories do
