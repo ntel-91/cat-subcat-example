@@ -5,13 +5,12 @@ class UsersController < ApplicationController
     end
 
     def create
-        user = User.new(
+        user = User.create(
             name: params[:name],
             username: params[:username],
             password: params[:password]
         )
-        user.save
-
+        session[:user] = user.id
         redirect_to categories_path
     end
 end

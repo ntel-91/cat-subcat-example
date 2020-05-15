@@ -1,10 +1,12 @@
 class ApplicationController < ActionController::Base
 
     def current_user
-        user = session[:username]
         
-        if user
-            "Welcome, #{user}!"
+        user_id = session[:user]
+        
+        if user_id
+            user = User.find(user_id)
+            "Welcome, #{user.username}!"
         else
             "Welcome to shopping site!"
         end

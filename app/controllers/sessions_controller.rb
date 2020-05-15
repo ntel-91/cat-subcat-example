@@ -7,13 +7,13 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         
         if user && user.authenticate(params[:password])
-            session[:username] = params[:username]
+            session[:user] = user.id
             redirect_to categories_path
         end
     end
 
     def destroy
-        session.delete :username
+        session.delete :user
         redirect_to login_path
     end
 end
