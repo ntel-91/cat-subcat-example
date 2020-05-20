@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-
+    before_action :valid?, except: [:new, :create]
+    
     def new
     end
     
